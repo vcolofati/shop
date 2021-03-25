@@ -72,7 +72,7 @@ class _AuthCardState extends State<AuthCard>
               title: Text('Ocorreu um erro'),
               content: Text(msg),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -202,24 +202,23 @@ class _AuthCardState extends State<AuthCard>
               if (_isLoading)
                 CircularProgressIndicator()
               else
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Theme.of(context).primaryTextTheme.button.color,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 8,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 8,
+                    ),
                   ),
                   child: Text(
                       _authMode == AuthMode.Login ? 'Entrar' : 'Registrar'),
                   onPressed: _submit,
                 ),
-              FlatButton(
+              TextButton(
                 onPressed: _switchAuthMode,
                 child: Text(
                     'Alternar para ${_authMode == AuthMode.Login ? 'Registrar' : 'Login'}'),
-                textColor: Theme.of(context).primaryColor,
               )
             ],
           ),
